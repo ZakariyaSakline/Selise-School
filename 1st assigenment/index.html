@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>add cart</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<ul class="ul">
+  <li class="li"><a class="active" href="#home">Home</a></li>
+  <li class="li"><a href="#news">Product List</a></li>
+  <li class="li"><a href="#contact">Contact</a></li>
+  <li class="li"><a href="#about">About</a></li>
+</ul>
+<table class="table1">
+
+    <tr class="tableTr1">
+        <td class="table1_td"></td>
+        <td class="table1_td">
+            <div class="table1_div">
+
+                <ul class="proList">
+                    <li class="proLi"><h1>Cart Quantity : </h1></li>
+                    <li class="proLi"><h1 id="cartNo"></h1> </li>
+                </ul>
+
+            </div>
+            <di>
+                    <button class="table1_btn" type="button" onclick="localstorageClear()">Clear all</button>
+
+            </di>
+        </td>
+        <td class="table1_td"></td>
+    </tr>
+
+</table>
+
+<table class="table2"> 
+    <tr class="table_tr">
+        <td class="table_td"></td>
+        <td class="table_td">
+                <div> <img class="img" src="image/1.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p>Price:2000 taka</p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button" onclick="addCart(a=1)"><h3>Add to Cart</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+           <div> <img class="img" src="image/2.jpg"></div>
+           <div>
+               <ul class="proList">
+                    <li class="proLi">
+                        <p>Price:2500 taka</p>
+                    </li>
+                    <li>
+                        <button class="ProBtn" type="button"  onclick="addCart(a=2)"><h3>Add to Cart</h3></button>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="table_td">
+            <div> <img class="img" src="image/3.jpg"></div>
+           <div>
+               <ul class="proList">
+                    <li class="proLi">
+                        <p>Price:3000 taka</p>
+                    </li>
+                    <li>
+                        <button class="ProBtn" type="button"  onclick="addCart(a=3)"><h3>Add to Cart</h3></button>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="table_td"></td>
+
+
+    </tr>
+    <tr class="table_tr">
+        <td class="table_td"></td>
+        <td class="table_td">
+                <div> <img class="img" src="image/4.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p>Price:4000 taka</p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=4)"><h3>Add to Cart</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+                <div> <img class="img" src="image/5.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p>Price:5000 taka</p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=5)"><h3>Add to Cart</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+                <div> <img class="img" src="image/6.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p>Price:4500 taka</p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=6)"><h3>Add to Cart</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td"></td>
+
+
+    </tr>
+    
+</table>
+
+
+
+<script src="external.js"></script>
+
+
+
+
+
+</body>
+</html>

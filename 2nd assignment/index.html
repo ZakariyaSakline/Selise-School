@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>add cart</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<ul class="ul">
+  <li class="li"><a class="active" href="#home">Home</a></li>
+  <li class="li"><a href="#news">Product List</a></li>
+  <li class="li"><a href="#contact">Contact</a></li>
+  <li class="li"><a href="#about">About</a></li>
+  <li><ul class="proList">
+        <li class="proLi"><h1  class="table1_div">Item Quantity : </h1></li>
+        <li class="proLi"><h1 id="cartNo"  class="table1_div"></h1> </li>
+    </ul></li>
+</ul>
+
+
+<table class="table2"> 
+    <tr class="table_tr">
+        <td class="table_td"></td>
+        <td class="table_td">
+                <div> <img class="img" src="image/1.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p >Price:<span id="proPrice1">200</span> taka/kg</p>
+                             <p>Name: <span id="proName1">Apple</span></p>
+
+                         </li>
+                         <li  class="proLi">
+                             <button class="ProBtn" type="button" onclick="addCart(a=1,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                             <button class="ProBtn" type="button" onclick="increaseQuantity(a=1,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                             <button class="ProBtn" type="button" onclick="decreaseQuantity(a=1,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+
+
+                         </li>
+                     
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+           <div> <img class="img" src="image/2.jpg"></div>
+           <div>
+               <ul class="proList">
+                    <li class="proLi">
+                        <p >Price:<span id="proPrice2">80</span> taka/kg</p>
+                        <p>Name: <span id="proName2">Mango</span></p>
+                    </li>
+                    <li>
+                        <button class="ProBtn" type="button"  onclick="addCart(a=2,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                        <button class="ProBtn" type="button" onclick="increaseQuantity(a=2,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                        <button class="ProBtn" type="button" onclick="decreaseQuantity(a=2,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="table_td">
+            <div> <img class="img" src="image/3.jpg"></div>
+           <div>
+               <ul class="proList">
+                    <li class="proLi">
+                        <p >Price:<span id="proPrice3">60</span> taka/kg</p>
+                        <p>Name: <span id="proName3">Papaya</span></p>
+                    </li>
+                    <li>
+                        <button class="ProBtn" type="button"  onclick="addCart(a=3,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                        <button class="ProBtn" type="button" onclick="increaseQuantity(a=3,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                        <button class="ProBtn" type="button" onclick="decreaseQuantity(a=3,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td class="table_td" rowspan="2">
+
+            <div class="cart_table">
+                <h2 style="text-align: center"> Cart Detailes</h2>
+
+<hr>
+                <table id="table" >
+                 
+                    <tr>
+                      <th class="cart_table_tr">Id</th>
+                      <th class="cart_table_tr">Name</th>
+                      <th class="cart_table_tr">Price</th>
+                      <th class="cart_table_tr">Quantity</th>
+                      <th class="cart_table_tr">Delete</th>
+                    </tr>
+              
+                </table>
+              </div>
+<hr>
+<h3>Total Price:<span id="totalPrice"></span> </h3>
+        </td>
+
+
+    </tr>
+    <tr class="table_tr">
+        <td class="table_td"></td>
+        <td class="table_td">
+                <div> <img class="img" src="image/4.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p >Price:<span id="proPrice4">50</span> taka/kg</p>
+                             <p>Name:<span id="proName4">Watermelon</span></p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=4,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                             <button class="ProBtn" type="button" onclick="increaseQuantity(a=4,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                             <button class="ProBtn" type="button" onclick="decreaseQuantity(a=4,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+                <div> <img class="img" src="image/5.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p >Price:<span id="proPrice5">70</span> taka/kg</p>
+                             <p>Name: <span id="proName5">Banana</span> </p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=5,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                             <button class="ProBtn" type="button" onclick="increaseQuantity(a=5,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                             <button class="ProBtn" type="button" onclick="decreaseQuantity(a=5,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+        <td class="table_td">
+                <div> <img class="img" src="image/6.jpg"></div>
+                <div>
+                    <ul class="proList">
+                         <li class="proLi">
+                             <p >Price:<span id="proPrice6">150</span> taka/kg</p>
+                             <p>Name: <span id="proName6">Orange</span></p>
+                         </li>
+                         <li>
+                             <button class="ProBtn" type="button"  onclick="addCart(a=6,proPrice='proPrice'+a,proName='proName'+a)"><h3>Add to Cart</h3></button>
+                             <button class="ProBtn" type="button" onclick="increaseQuantity(a=6,proPrice='proPrice'+a,proName='proName'+a)"><h3>+</h3></button>
+                             <button class="ProBtn" type="button" onclick="decreaseQuantity(a=6,proPrice='proPrice'+a,proName='proName'+a)"><h3>-</h3></button>
+                         </li>
+                     </ul>
+                 </div>
+        </td>
+
+    </tr>
+    
+</table>
+
+
+
+<script src="external.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+body{
+    padding: 0px;
+    margin: 0px;
+}
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.li {
+  float: left;
+}
+
+.li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.li a:hover {
+  background-color: #111;
+}
+.table2{
+    height: 800px;
+    width: 100%;
+}
+.table_tr{
+   height: 380px;
+    border: 1px solid red;
+    width: 100%;
+}
+.img{
+    height: 300px;
+    width: 100%;
+   
+}
+.table_td{
+    width: 20%;
+   
+}
+.proList{
+  list-style-type: none;
+  margin: 0;
+
+  overflow: hidden;
+}
+.proLi{
+  float: left;
+
+}
+.ProBtn{
+  margin-left: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.ProBtn:hover {
+  background-color: black;
+  color: white;
+}
+.table1{
+  height: 200px;
+  width: 100%;
+}
+.table1_td{
+  width: 33.33%
+}
+.table1_div{
+  text-align: center;
+  color:red;
+}
+
+.table1_btn{
+  margin-left: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
+}
+/* .cart_table{
+  margin-left: 10px;
+} */
+.cart_table_tr{
+padding: 10px;
+}
+.table,tr,td{
+  padding: 5px;
+}
