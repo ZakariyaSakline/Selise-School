@@ -7,9 +7,9 @@
 <form [formGroup]="signupForm" (ngSubmit)="addProductData(signupForm)">
     <div class="example-container">
      
-        <mat-form-field hintLabel="Max 10 characters">
+        <mat-form-field hintLabel="Max 5 characters">
           <input matInput #input maxlength="10"  type="number" formControlName="proId" placeholder="Product Id">
-          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+          <mat-hint align="end">{{input.value?.length || 0}}/5</mat-hint>
         </mat-form-field>
 
         <mat-form-field hintLabel="Max 20 characters">
@@ -23,11 +23,15 @@
             <span matSuffix>.00</span>
           </mat-form-field>
 
-          <div class="example-button-row">
-              <button mat-stroked-button color="primary">Submit</button>
-             
-            </div>
-
+          <!-- <mat-form-field>
+          <input matInput placeholder="image" type="image" formControlName="proImage"  alt="img"
+      >
+          </mat-form-field> -->
+          
+            <div class="example-button-row">
+            <button mat-stroked-button color="primary" class="submit-button" type="submit"
+            [disabled]="signupForm.status !== 'VALID'">Submit</button>
+          </div> 
     </div>
   
   </form>

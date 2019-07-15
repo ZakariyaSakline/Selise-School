@@ -11,23 +11,35 @@ export class AddproductComponent implements OnInit {
   title="Add Product Form";
 
   signupForm:FormGroup;
-  proId:string="";
-  proName:string="";
-  proPrice:string= "";
+  ProductId:string="";
+  ProductName:string="";
+  ProductPrice:string= "";
+  
 
   constructor(private formbilder:FormBuilder ) { 
-    this.signupForm=formbilder.group({
-      proId:new FormControl(),
-      proName:new FormControl(),
-      proPrice:new FormControl()
+    this.signupForm = formbilder.group({
+      proId:['',Validators.required],
+      proName:['',Validators.required],
+      proPrice:['',Validators.required],
+     
 
     });
   }
 
   ngOnInit() {
   }
+   addProductData(signupForm:any){
+     debugger;
+    let input=[];
 
-   addProductData(signupForm:NgForm){
-      console.log(signupForm.controls);
+    this.ProductId =signupForm.controls.proId.value;
+    this.ProductName =signupForm.controls.proName.value;
+    this.ProductPrice =signupForm.controls.proPrice.value;
+
+
+    let data={'proId':this.ProductId,'proName':this.ProductName,'proPrice':this.ProductPrice}
+    input.push(data);
+    console.log(input);
+    return input;
    }
 }
