@@ -1,0 +1,33 @@
+
+
+
+<h2 style="text-align: center">{{title}}</h2>
+
+
+<form [formGroup]="signupForm" (ngSubmit)="addProductData(signupForm)">
+    <div class="example-container">
+     
+        <mat-form-field hintLabel="Max 10 characters">
+          <input matInput #input maxlength="10"  type="number" formControlName="proId" placeholder="Product Id">
+          <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Max 20 characters">
+            <input matInput #input maxlength="20" formControlName="proName"  placeholder="Product Name">
+            <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+          </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Price" type="number" formControlName="proPrice" class="example-right-align">
+            <span matPrefix>tk&nbsp;</span>
+            <span matSuffix>.00</span>
+          </mat-form-field>
+
+          <div class="example-button-row">
+              <button mat-stroked-button color="primary">Submit</button>
+             
+            </div>
+
+    </div>
+  
+  </form>

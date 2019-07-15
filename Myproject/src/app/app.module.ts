@@ -36,13 +36,16 @@ import {MatToolbarModule,
     MatSortModule,
     MatPaginatorModule
        } from '@angular/material';
-import { NavigationComponent } from './navigation/navigation.component';
 import { from } from 'rxjs';
+import { AddproductComponent } from './addproduct/addproduct.component';
+import { RouterModule } from '@angular/router';
+import { DashbordComponent } from './dashbord/dashbord.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent
+    AddproductComponent,
+    DashbordComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,13 @@ import { from } from 'rxjs';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RouterModule.forRoot([
+      {path: 'add_product', component: AddproductComponent},
+      {path: 'dash_board', component: DashbordComponent}
+
+    ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
