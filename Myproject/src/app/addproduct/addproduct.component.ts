@@ -16,8 +16,7 @@ export class AddproductComponent implements OnInit {
       ProductId:number;
       ProductName:string="";
       ProductPrice:number;
-      ProductImage:File;
-      // na:string="";
+      ProductImage:string="";
 
     constructor(private formbilder:FormBuilder,private productservice:ProductService ) { 
       this.signupForm = formbilder.group({
@@ -33,7 +32,6 @@ export class AddproductComponent implements OnInit {
 
 
         ngOnInit() {
-          // this.na=this.productservice.name();
         }
 
   porductSubmit(signupForm:any):any{

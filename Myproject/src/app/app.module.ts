@@ -40,12 +40,14 @@ import { from } from 'rxjs';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { RouterModule } from '@angular/router';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddproductComponent,
-    DashbordComponent
+    DashbordComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
     MatPaginatorModule,
     RouterModule.forRoot([
       {path: 'add_product', component: AddproductComponent},
-      {path: 'dash_board', component: DashbordComponent}
+      {path: 'dash_board', component: DashbordComponent},
+      {path: 'product_list', component: ProductListComponent},
 
     ])
 
