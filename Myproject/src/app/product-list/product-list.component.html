@@ -1,25 +1,30 @@
-<div *ngFor="let key of jasonData; ">
-    <mat-card class="example-card"  >
-    
-      <img mat-card-image src="{{key.proImage}}" alt="Photo of a Shiba Inu">
-      <mat-card-content>
+<div fxLayout="row">
 
-        <p> ID:{{key.proId}}</p>
-        <p>  Name:{{key.proName}}</p>
 
-        <p> Price:{{key.proPrice}}</p>
+    <div *ngFor="let key of jasonData; "> 
+      <div style="margin-left: 10px; margin-top: 10px" >
+            <mat-card class="example-card"  >
+            
+              <img mat-card-image src="{{key.proImage}}" alt="Photo of product" style="height: 250px">
+              <mat-card-content>
 
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button><b>Add Cart</b></button>
-        <button mat-button><i class="material-icons">add</i></button>
-        <button mat-button><i class="material-icons">remove</i></button>
+                <p style="text-align: center"> <b> Name:{{key.proName}}</b></p>
+                <p style="text-align: center"> ID : {{key.proId}}<span style="margin-left: 25px"> Price:{{key.proPrice}}</span></p>
+                
 
-      </mat-card-actions>
-    </mat-card>
-    <br>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-button><b>Add Cart</b></button>
+                <button mat-button><i class="material-icons">add</i></button>
+                <button mat-button><i class="material-icons">remove</i></button>
+
+              </mat-card-actions>
+            </mat-card>
+      </div>
+    </div>
 </div>
-<div>
-   <a href="https://www.google.com/imgres?imgurl=https%3A%2F%2Ffoodforward.org%2Fwp-content%2Fuploads%2F2018%2F04%2Fmango-min-1024x576.png&imgrefurl=https%3A%2F%2Ffoodforward.org%2F2018%2F05%2Fproduce-month-mangoes%2F&docid=3dRA8jiwgwsnnM&tbnid=ihdTzrGHun3TIM%3A&vet=10ahUKEwilr_ylnrrjAhVLPY8KHYVYAvoQMwiJASgKMAo..i&w=1024&h=576&bih=657&biw=1366&q=mango&ved=0ahUKEwilr_ylnrrjAhVLPY8KHYVYAvoQMwiJASgKMAo&iact=mrc&uact=8"  >h</a>
 
-</div>
+
+
+
+  
