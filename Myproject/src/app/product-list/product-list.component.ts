@@ -33,7 +33,6 @@ export class ProductListComponent implements OnInit {
    cartProduct(id:number,name:string,image:string,price:number):any{
 debugger;
       let cart_product=this.productservice.getLocalStorageAddCartProduct();
-      console.log(cart_product[0].proId);
       let data={'proId':id,'proName':name,'proPrice':price,'proImage':image}
 let check:string;
 let check1:string;
