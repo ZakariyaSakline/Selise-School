@@ -45,6 +45,7 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DataTableComponent } from './data-table/data-table.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { DataTableComponent } from './data-table/data-table.component';
     AddproductComponent,
     DashbordComponent,
     ProductListComponent,
-    DataTableComponent
+    DataTableComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +99,8 @@ import { DataTableComponent } from './data-table/data-table.component';
       { path: 'dash_board', component: DashbordComponent },
       { path: 'product_list', component: ProductListComponent },
       { path: 'data_table', component: DataTableComponent },
+      { path: 'cart_details', component: CartDetailsComponent },
+
 
     ])
 

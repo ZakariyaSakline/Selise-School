@@ -17,7 +17,25 @@ export class ProductService {
               }
       }
 
+      getLocalStorageAddCartProduct():any{
+        
+        let localArray = JSON.parse(localStorage.getItem('cartPro'));
+          if (localArray) {
+            return localArray;
+          } else {
+            return [];
+            }
+    }
 
+    countCart():any{
+      let localArray = JSON.parse(localStorage.getItem('cartPro'));
+         if(localArray){
+            return localArray.length;
+         }else{
+           return 0;
+         }
+
+    }
 
 
 }

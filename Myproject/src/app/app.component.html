@@ -1,8 +1,4 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+
 
 
 
@@ -15,7 +11,7 @@
   
       <div>
           <a mat-button [routerLink]="'/dash_board'"><i class="material-icons">dashboard</i> Dashboard</a>
-          <a mat-button [routerLink]="'/accounts'"> <i class="material-icons">add_shopping_cart</i> Add Shopping Cart</a>
+          <a mat-button [routerLink]="'/cart_details'"><span style="color: red"><b>{{count}}</b></span> <i class="material-icons">add_shopping_cart</i>Cart Details</a>
       </div>
   
       
@@ -26,7 +22,7 @@
       <mat-drawer #drawer class="example-sidenav" mode="side">
         <div>
             <mat-nav-list>
-                <a mat-list-item [routerLink]="'/product_list'"><i class="material-icons">list</i> Product List</a>
+                <a mat-list-item [routerLink]="'/product_list'"><i class="material-icons">list</i> Products</a>
                 <a mat-list-item [routerLink]="'/add_product'"><img src="./../../assets/image/addpro.jpg"  height="35" width="35"> Add Product</a>
                 <a mat-list-item [routerLink]="'/data_table'"><i class="material-icons">table_chart</i> Data Table</a>
 

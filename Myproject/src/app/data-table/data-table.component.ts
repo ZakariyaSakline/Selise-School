@@ -2,6 +2,8 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import { MatPaginator} from '@angular/material';
+import { from } from 'rxjs';
 
 
 
@@ -23,6 +25,7 @@ export interface PeriodicElement {
 })
 
 export class DataTableComponent implements OnInit {
+  // paginator: MatPaginator;
 
   constructor(private productservice:ProductService) { }
 
@@ -33,11 +36,13 @@ export class DataTableComponent implements OnInit {
    displayedColumns: string[] = ['proId','proImage', 'proName', 'proPrice', 'proEdit','proDelete'];
    dataSource = new MatTableDataSource(this.jasonData);
  
-   @ViewChild(MatSort, {static: true}) sort: MatSort;
+   @ViewChild(MatSort) sort: MatSort;
+   @ViewChild(MatPaginator) paginator: MatPaginator;
 
    ngOnInit() {
      this.dataSource.sort = this.sort;
-   }
+     this.dataSource.paginator = this.paginator;   
+    }
 
    applyFilter(filterValue: string) {
      this.dataSource.filter = filterValue.trim().toLowerCase();

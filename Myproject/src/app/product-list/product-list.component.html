@@ -14,9 +14,9 @@
 
               </mat-card-content>
               <mat-card-actions>
-                <button mat-button><b>Add Cart</b></button>
-                <button mat-button><i class="material-icons">add</i></button>
-                <button mat-button><i class="material-icons">remove</i></button>
+                <button mat-button (click)="addCart(id=key.proId,name=key.proName,image=key.proImage,price=key.proPrice)"><b>Add Cart</b></button>
+                <!-- <button mat-button><i class="material-icons">add</i></button>
+                <button mat-button><i class="material-icons">remove</i></button> -->
 
               </mat-card-actions>
             </mat-card>
