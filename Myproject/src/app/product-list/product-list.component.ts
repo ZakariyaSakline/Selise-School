@@ -22,18 +22,18 @@ export class ProductListComponent implements OnInit {
   }
 
 
-    addCart(id:number,name:string,image:string,price:number){
+    addCart(id:number,quantity:number,name:string,image:string,price:number){
       
-        this.set_cartProduct_LocalStorage(id,name,image,price);
-        this.cartProduct(id,name,image,price);
+        this.set_cartProduct_LocalStorage(id,quantity,name,image,price);
+        this.cartProduct(id,quantity,name,image,price);
     }
 
 
 
-   cartProduct(id:number,name:string,image:string,price:number):any{
+   cartProduct(id:number,quantity:number,name:string,image:string,price:number):any{
 debugger;
       let cart_product=this.productservice.getLocalStorageAddCartProduct();
-      let data={'proId':id,'proName':name,'proPrice':price,'proImage':image}
+      let data={'proId':id,'proQuantity':quantity,'proName':name,'proPrice':price,'proImage':image}
 let check:string;
 let check1:string;
         if(cart_product.length > 0){
@@ -60,8 +60,8 @@ let check1:string;
           return cart_product;
       }
 
-   set_cartProduct_LocalStorage(id:number,name:string,image:string,price:number){
-    let array_to_string = JSON.stringify(this.cartProduct(id,name,image,price));
+   set_cartProduct_LocalStorage(id:number,quantity:number,name:string,image:string,price:number){
+    let array_to_string = JSON.stringify(this.cartProduct(id,quantity,name,image,price));
       localStorage.setItem('cartPro', array_to_string);
              
     }

@@ -33,7 +33,7 @@ export class DataTableComponent implements OnInit {
    jasonData:[]=this.productservice.getLocalStorageProduct();
 
    
-   displayedColumns: string[] = ['proId','proImage', 'proName', 'proPrice', 'proEdit','proDelete'];
+   displayedColumns: string[] = ['proImage','proId', 'proName', 'proPrice', 'proEdit','proDelete'];
    dataSource = new MatTableDataSource(this.jasonData);
  
    @ViewChild(MatSort) sort: MatSort;

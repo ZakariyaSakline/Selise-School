@@ -15,11 +15,18 @@ export class CartDetailsComponent implements OnInit {
 
   jasonData:[]=this.productservice.getLocalStorageAddCartProduct();
 
-  displayedColumns: string[] = ['proId','proImage', 'proName', 'proPrice','proDelete'];
+  displayedColumns: string[] = ['proImage','proId','proQuantity', 'proName', 'proPrice','Increase_Decrease','proDelete'];
   dataSource = new MatTableDataSource(this.jasonData);
 
 
   ngOnInit() {
   }
+
+
+  increaseQuantity(jasonData:[],id:number):any{
+    console.log(id);
+
+  }
+
 
 }
