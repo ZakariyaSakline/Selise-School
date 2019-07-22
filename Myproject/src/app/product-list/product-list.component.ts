@@ -31,7 +31,7 @@ export class ProductListComponent implements OnInit {
 
 
    cartProduct(id:number,quantity:number,name:string,image:string,price:number):any{
-debugger;
+
       let cart_product=this.productservice.getLocalStorageAddCartProduct();
       let data={'proId':id,'proQuantity':quantity,'proName':name,'proPrice':price,'proImage':image}
 let check:string;
@@ -58,11 +58,11 @@ let check1:string;
           
 
           return cart_product;
-      }
+   }
 
    set_cartProduct_LocalStorage(id:number,quantity:number,name:string,image:string,price:number){
     let array_to_string = JSON.stringify(this.cartProduct(id,quantity,name,image,price));
-      localStorage.setItem('cartPro', array_to_string);
+        localStorage.setItem('cartPro', array_to_string);
              
     }
 

@@ -1,7 +1,7 @@
 
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource"   style="margin: 20px;">
+  <table mat-table [dataSource]="dataSource" >
 
     <ng-container matColumnDef="proImage">
       <th mat-header-cell *matHeaderCellDef><b> Product Image </b></th>
@@ -30,8 +30,8 @@
       <th mat-header-cell *matHeaderCellDef><b> Increase/Decrease </b></th>
       <td mat-cell *matCellDef="let element">
         <ul style="list-style-type:none;">
-        <li><button mat-button (click)="increaseQuantity(id=2)"><i class="material-icons">keyboard_arrow_up</i></button></li>
-        <li><button mat-button><i class="material-icons"> keyboard_arrow_down</i> </button></li>
+        <li><button mat-button (click)="increaseQuantity(id=element.proId)"><i class="material-icons">keyboard_arrow_up</i></button></li>
+        <li><button mat-button (click)="decreaseQuantity(id=element.proId)"><i class="material-icons"> keyboard_arrow_down</i> </button></li>
       </ul>
       </td>
     </ng-container>
@@ -48,7 +48,7 @@
 
     <ng-container matColumnDef="proDelete">
       <th mat-header-cell *matHeaderCellDef><b> Remove </b></th>
-      <td mat-cell *matCellDef="let element"><button mat-button><i class="material-icons">delete_sweep</i></button>
+      <td mat-cell *matCellDef="let element"><button mat-button (click)="removeCart(id=element.proId)"><i class="material-icons">delete_sweep</i></button>
       </td>
     </ng-container>
 

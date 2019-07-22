@@ -13,20 +13,65 @@ export class CartDetailsComponent implements OnInit {
 
   constructor(private productservice:ProductService) { }
 
-  jasonData:[]=this.productservice.getLocalStorageAddCartProduct();
+  jasonData:any=this.productservice.getLocalStorageAddCartProduct();
 
   displayedColumns: string[] = ['proImage','proId','proQuantity', 'proName', 'proPrice','Increase_Decrease','proDelete'];
   dataSource = new MatTableDataSource(this.jasonData);
 
 
   ngOnInit() {
+
+  }
+
+
+  increaseQuantity(id:number):any{
+    let cartData=this.jasonData;
+
+      for(let i=0; i<cartData.length;i++){
+
+         if(cartData[i].proId == id){
+           ++ cartData[i].proQuantity ;
+          let array_to_string = JSON.stringify(cartData);
+              localStorage.setItem('cartPro', array_to_string);
+          }
+      }
   }
 
 
-  increaseQuantity(jasonData:[],id:number):any{
-    console.log(id);
+  decreaseQuantity(id:number):any{
+
+    let cartData=this.jasonData;
+
+      for(let i=0; i<cartData.length;i++){
+
+         if(cartData[i].proId == id && cartData[i].proQuantity>1){
+           -- cartData[i].proQuantity ;
+          let array_to_string = JSON.stringify(cartData);
+              localStorage.setItem('cartPro', array_to_string);
+          }
+      }
+  }
+
+
+  removeCart(id:number):any{
+
+    let cartData=this.jasonData;
+
+      for(let i=0; i<cartData.length; i++){
+
+        if(cartData[i].proId == id){
+            let indexValue=cartData.indexOf(cartData[i]);
+              cartData.splice(indexValue ,1);
+              localStorage.setItem("cartPro" , JSON.stringify(cartData));
+      }
+    }
+   return this.jasonData;
 
   }
+
+
+
+
 
 
 }
