@@ -11,10 +11,12 @@
   
       <div>
           <a mat-button [routerLink]="'/dash_board'"><i class="material-icons">dashboard</i> Dashboard</a>
-          <a mat-button [routerLink]="'/cart_details'"><span style="color: red"><b>{{count}}</b></span> <i class="material-icons">add_shopping_cart</i>Cart Details</a>
+          <a mat-button [routerLink]="'/cart_details'"  matBadge="{{count}}" matBadgePosition="before" matBadgeColor="accent"> <i class="material-icons">add_shopping_cart</i>Cart Details</a>
       </div>
   
-      
+    
+  <!-- <span style="color: red"><b>{{count}}</b></span> -->
+
     </mat-toolbar-row>
   </mat-toolbar>
  
