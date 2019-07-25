@@ -25,9 +25,10 @@ export class ProductListComponent implements OnInit {
 
 
     addCart(id:number,quantity:number,name:string,image:string,price:number){
-      
+
+    
         this.set_cartProduct_LocalStorage(id,quantity,name,image,price);
-        // this.cartProduct(id,quantity,name,image,price);
+      this.cartProduct(id,quantity,name,image,price);
     }
 
 
@@ -89,6 +90,7 @@ let check1:string;
 
 openDialog(): void {
   const dialogRef = this.dialog.open(ProductDetailesComponent, {
+    width: '800px',height:'800px'
   });
 
   dialogRef.afterClosed().subscribe(result => {
