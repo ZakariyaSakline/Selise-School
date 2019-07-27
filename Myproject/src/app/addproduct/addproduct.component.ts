@@ -10,7 +10,7 @@ import { ProductService } from '../product.service';
 })
 export class AddproductComponent implements OnInit {
 
-      title="Add Product Form";
+      title="Add Product";
 
       signupForm:FormGroup;
       ProductId:number;

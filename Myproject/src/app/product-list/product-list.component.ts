@@ -13,7 +13,9 @@ import {ProductDetailesComponent} from '../product-detailes/product-detailes.com
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private productservice:ProductService,private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+  constructor(private productservice:ProductService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog) { 
   }
 
       jasonData:[]=this.productservice.getLocalStorageProduct();

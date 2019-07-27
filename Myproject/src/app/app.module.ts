@@ -49,6 +49,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DataTableComponent } from './data-table/data-table.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { ProductDetailesComponent } from './product-detailes/product-detailes.component';
+import { EditproductComponent } from './editproduct/editproduct.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ProductDetailesComponent } from './product-detailes/product-detailes.co
     ProductListComponent,
     DataTableComponent,
     CartDetailsComponent,
-    ProductDetailesComponent
+    ProductDetailesComponent,
+    EditproductComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +116,7 @@ import { ProductDetailesComponent } from './product-detailes/product-detailes.co
 // for product detailes
     entryComponents:[
       ProductDetailesComponent,
+      EditproductComponent
     ],
 
 
