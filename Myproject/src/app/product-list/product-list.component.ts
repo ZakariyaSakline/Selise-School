@@ -34,8 +34,8 @@ export class ProductListComponent implements OnInit {
 
       let cart_product=this.productservice.getLocalStorageAddCartProduct();
       let data={'proId':id,'proQuantity':quantity,'proName':name,'proPrice':price,'proImage':image}
-let check:string;
-let check1:string;
+      let check:string;
+      let check1:string;
         if(cart_product.length > 0){
           for(let i=0; i<cart_product.length; i++){
               if(cart_product[i].proId == id ){
