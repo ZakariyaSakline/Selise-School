@@ -28,6 +28,7 @@ export class ProductService {
     }
 
     countCart():any{
+      
       let localArray = JSON.parse(localStorage.getItem('cartPro'));
          if(localArray){
             return localArray.length;
@@ -36,6 +37,15 @@ export class ProductService {
          }
 
     }
+    
+
+    getLocalStorageProDetailes():any{
+
+      let localArray = JSON.parse(localStorage.getItem('proDetailes'));
+          return localArray;
+    }
+
+
 
 
 

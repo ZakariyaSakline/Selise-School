@@ -36,6 +36,8 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
+  MatBadgeModule
+ 
 } from '@angular/material';
 
 import { from } from 'rxjs';
@@ -46,6 +48,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DataTableComponent } from './data-table/data-table.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
+import { ProductDetailesComponent } from './product-detailes/product-detailes.component';
 
 
 @NgModule({
@@ -55,7 +58,8 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
     DashbordComponent,
     ProductListComponent,
     DataTableComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    ProductDetailesComponent
   ],
   imports: [
     BrowserModule,
@@ -94,6 +98,8 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatBadgeModule,
+    
     RouterModule.forRoot([
       { path: 'add_product', component: AddproductComponent },
       { path: 'dash_board', component: DashbordComponent },
@@ -105,6 +111,12 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
     ])
 
   ],
+// for product detailes
+    entryComponents:[
+      ProductDetailesComponent,
+    ],
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

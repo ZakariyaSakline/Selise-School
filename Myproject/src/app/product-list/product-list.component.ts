@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {ProductDetailesComponent} from '../product-detailes/product-detailes.component'
 
 @Component({
   selector: 'app-product-list',
@@ -11,7 +13,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private productservice:ProductService) { 
+  constructor(private productservice:ProductService,private _snackBar: MatSnackBar,public dialog: MatDialog) { 
   }
 
       jasonData:[]=this.productservice.getLocalStorageProduct();
@@ -23,9 +25,10 @@ export class ProductListComponent implements OnInit {
 
 
     addCart(id:number,quantity:number,name:string,image:string,price:number){
-      
+
+    
         this.set_cartProduct_LocalStorage(id,quantity,name,image,price);
-        this.cartProduct(id,quantity,name,image,price);
+      this.cartProduct(id,quantity,name,image,price);
     }
 
 
@@ -65,6 +68,40 @@ export class ProductListComponent implements OnInit {
         localStorage.setItem('cartPro', array_to_string);
              
     }
+
+
+    proDetailes(id:number,name:string,image:string,price:number){
+      let data={'proId':id,'proName':name,'proPrice':price,'proImage':image}
+
+      localStorage.setItem('proDetailes',  JSON.stringify(data));
+        
+    }
+
+
+
+    openSnackBar(message: string, action: string) {
+      this._snackBar.open(message, action, {
+        duration: 2000,
+      });
+    }
+
+
+// for product detailes
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(ProductDetailesComponent, {
+    width: '800px',height:'800px'
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+   
+  });
+}
+
+
+
+
 
 
 
