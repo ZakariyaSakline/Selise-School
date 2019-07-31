@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter} from '@angular/core';
+// import { EventEmitter } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -44,19 +45,6 @@ export class ProductService {
       let localArray = JSON.parse(localStorage.getItem('proDetailes'));
           return localArray;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 
 }

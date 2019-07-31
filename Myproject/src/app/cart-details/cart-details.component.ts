@@ -31,8 +31,7 @@ export class CartDetailsComponent implements OnInit {
 
          if(cartData[i].proId == id){
            ++ cartData[i].proQuantity ;
-          let array_to_string = JSON.stringify(cartData);
-              localStorage.setItem('cartPro', array_to_string);
+              localStorage.setItem('cartPro', JSON.stringify(cartData));
           }
       }
   }
@@ -46,8 +45,7 @@ export class CartDetailsComponent implements OnInit {
 
          if(cartData[i].proId == id && cartData[i].proQuantity>1){
            -- cartData[i].proQuantity ;
-          let array_to_string = JSON.stringify(cartData);
-              localStorage.setItem('cartPro', array_to_string);
+              localStorage.setItem('cartPro', JSON.stringify(cartData));
           }
       }
   }

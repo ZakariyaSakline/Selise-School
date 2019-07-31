@@ -3,6 +3,7 @@ import { ProductService } from '../product.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ProductDetailesComponent} from '../product-detailes/product-detailes.component'
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,7 +14,11 @@ import {ProductDetailesComponent} from '../product-detailes/product-detailes.com
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private productservice:ProductService,private _snackBar: MatSnackBar,public dialog: MatDialog) { 
+  constructor(
+    private productservice:ProductService,
+    private _snackBar: MatSnackBar,
+    private cartService: CartService,
+    public dialog: MatDialog) { 
   }
 
       jasonData:[]=this.productservice.getLocalStorageProduct();
@@ -26,9 +31,11 @@ export class ProductListComponent implements OnInit {
 
     addCart(id:number,quantity:number,name:string,image:string,price:number){
 
-    
+      debugger;
         this.set_cartProduct_LocalStorage(id,quantity,name,image,price);
-      this.cartProduct(id,quantity,name,image,price);
+        this.cartProduct(id,quantity,name,image,price);
+        this.cartService.emitNavChangeEvent(10);
+
     }
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from './product.service';
+import { CartService } from './cart.service';
 
 
 @Component({
@@ -13,13 +14,18 @@ import { ProductService } from './product.service';
 export class AppComponent {
 
 
-  constructor(private productservice:ProductService) { 
+  constructor(
+    private productservice: ProductService,
+    private cartService: CartService
+    ) { 
   }
 
       
   count:number =this.productservice.countCart();
-
   ngOnInit() {
+    this.cartService.getNavChangeEmitter().subscribe(response => {
+      this.count = this.productservice.countCart();
+    })
   }
 
 
