@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import {MatTableDataSource} from '@angular/material/table';
+import { CartService } from '../cart.service';
+
 
 @Component({
   selector: 'app-cart-details',
@@ -11,16 +13,20 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class CartDetailsComponent implements OnInit {
 
-  constructor(private productservice:ProductService) { }
+  constructor(private productservice:ProductService,
+    private cartService: CartService 
+    ) { }
 
   jasonData:any=this.productservice.getLocalStorageAddCartProduct();
 
   displayedColumns: string[] = ['proImage','proId','proQuantity', 'proName', 'proPrice','Increase_Decrease','proDelete'];
   dataSource = new MatTableDataSource(this.jasonData);
-
-
+id:number;
   ngOnInit() {
-
+    this.cartService.getRemoveCartTableEmitter().subscribe(response => {
+    this.jasonData;
+    })
+   
   }
 
 
@@ -63,6 +69,8 @@ export class CartDetailsComponent implements OnInit {
               localStorage.setItem("cartPro" , JSON.stringify(cartData));
       }
     }
+    this.cartService.emitNavChangeEvent(10);
+
    return this.jasonData;
 
   }

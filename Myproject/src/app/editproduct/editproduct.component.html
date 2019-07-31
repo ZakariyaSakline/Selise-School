@@ -4,7 +4,7 @@
 <h2 style="text-align: center">{{title}}</h2>
 
 
-<form [formGroup]="signupForm" (ngSubmit)="porductSubmit(signupForm)">
+<form [formGroup]="signupForm" (ngSubmit)="setFromValue(signupForm)">
     <div class="example-container">
      
         <mat-form-field hintLabel="Max 5 characters">

@@ -53,7 +53,6 @@ export class DataTableComponent implements OnInit {
    }
 
 // for edit datatable
-
    openEditDialog(): void {
     const dialogRef = this.dialog.open(EditproductComponent, {
       width: '800px',height:'800px'
@@ -66,6 +65,30 @@ export class DataTableComponent implements OnInit {
   }
 
 
+  getEditFormValue(element){
+    let input=[];
+    let data={'proId':element.proId,'proName':element.proName,'proPrice':element.proPrice,'proImage':element.proImage}
+    input.push(data);
+    localStorage.setItem('editData',  JSON.stringify( input));
+
+    return element;
+  }
 
 
-}
+
+
+
+
+
+
+         
+   }
+
+
+
+
+
+
+
+
+

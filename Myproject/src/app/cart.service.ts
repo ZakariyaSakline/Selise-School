@@ -17,6 +17,16 @@ export class CartService {
   getNavChangeEmitter() {
     return this.navchange;
   }
+// delete cart table row
+
+  removeCart: EventEmitter <number> = new EventEmitter();
+
+  emitRemoveCartTableEvent(x: number) {
+    this.removeCart.emit(x);
+  }
+  getRemoveCartTableEmitter() {
+    return this.removeCart;
+  }
 
 
 }
