@@ -14,15 +14,12 @@ import { CartService } from '../cart.service';
 })
 export class ProductListComponent implements OnInit {
 
-<<<<<<< HEAD
+
   constructor(
     private productservice:ProductService,
     private _snackBar: MatSnackBar,
     private cartService: CartService,
-=======
-  constructor(private productservice:ProductService,
-    private _snackBar: MatSnackBar,
->>>>>>> 1480377f2060df660b77c651f85d46c593c26fc4
+
     public dialog: MatDialog) { 
   }
 
