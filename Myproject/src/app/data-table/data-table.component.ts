@@ -4,6 +4,9 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { MatPaginator} from '@angular/material';
 import { from } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {EditproductComponent} from '../editproduct/editproduct.component'
+
 
 
 
@@ -27,7 +30,8 @@ export interface PeriodicElement {
 export class DataTableComponent implements OnInit {
   // paginator: MatPaginator;
 
-  constructor(private productservice:ProductService) { }
+  constructor(private productservice:ProductService,
+    public dialog: MatDialog) { }
 
 
    jasonData:[]=this.productservice.getLocalStorageProduct();
@@ -47,6 +51,20 @@ export class DataTableComponent implements OnInit {
    applyFilter(filterValue: string) {
      this.dataSource.filter = filterValue.trim().toLowerCase();
    }
+
+// for edit datatable
+
+   openEditDialog(): void {
+    const dialogRef = this.dialog.open(EditproductComponent, {
+      width: '800px',height:'800px'
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+     
+    });
+  }
+
 
 
 

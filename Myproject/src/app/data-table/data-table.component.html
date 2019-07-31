@@ -34,7 +34,7 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="proEdit">
         <th mat-header-cell *matHeaderCellDef><b>Edit Product</b> </th>
-        <td mat-cell *matCellDef="let element"><button mat-button> <i class="material-icons">create</i></button></td>
+        <td mat-cell *matCellDef="let element"><button mat-button (click)= "openEditDialog(id=element.proId,name=element.proName,image=element.proImage,price=element.proPrice)"> <i class="material-icons">create</i></button></td>
       </ng-container>
 
       <ng-container matColumnDef="proDelete">
