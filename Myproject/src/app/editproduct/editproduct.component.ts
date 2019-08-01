@@ -37,6 +37,19 @@ export class EditproductComponent implements OnInit {
     });
    }
 
+
+   
+  //  setFromValue ():any {
+  //   this.signupForm.setValue({
+  //       "proId": '11',
+  //       "proName":'',
+  //       "proPrice":'',
+  //       "proImage":''
+
+  //   });
+  // }
+
+
  
   ngOnInit() {
   }
