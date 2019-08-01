@@ -31,9 +31,11 @@ export class DataTableComponent implements OnInit {
   // paginator: MatPaginator;
 
   constructor(private productservice:ProductService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    ) { }
 
-
+   
+  
    jasonData:[]=this.productservice.getLocalStorageProduct();
 
    
@@ -74,6 +76,9 @@ export class DataTableComponent implements OnInit {
     return element;
   }
 
+
+
+  
 
 
 

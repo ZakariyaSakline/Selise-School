@@ -1,8 +1,8 @@
-<div fxLayout="row">
+<div fxLayout="row wrap">
 
 
     <div *ngFor="let key of jasonData; "> 
-      <div style="margin-left: 10px; margin-top: 10px" >
+      <div style="margin-left: 10px; margin-top: 10px;min-width: 250px" >
             <mat-card class="example-card"  >
             
               <a  (click)="proDetailes(id=key.proId,name=key.proName,image=key.proImage,price=key.proPrice)" (click)="openDialog()" style="cursor: pointer;"><img mat-card-image src="{{key.proImage}}" alt="Photo of product" style="height: 150px;width: 200px;padding: 0px;"></a>

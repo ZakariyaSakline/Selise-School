@@ -1,97 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,Validators,FormGroup,FormControl,NgForm } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angular/forms';
 import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-addproduct',
   templateUrl: './addproduct.component.html',
   styleUrls: ['./addproduct.component.css'],
-  providers:[ProductService]
 })
 export class AddproductComponent implements OnInit {
+  title = "Add Product";
+  signupForm: FormGroup;
+  input;
 
-      title="Add Product";
-
-      signupForm:FormGroup;
-      ProductId:number;
-      ProductName:string="";
-      ProductPrice:number;
-      ProductImage:string="";
-
-    constructor(private formbilder:FormBuilder,private productservice:ProductService ) { 
-      this.signupForm = formbilder.group({
-        proId:['',Validators.required],
-        proName:['',Validators.required],
-        proPrice:['',Validators.required],
-        proImage:['',Validators.required]
-      
-
-      });
-    }
-
-
-
-        ngOnInit() {
-        }
-
-  porductSubmit(signupForm:any):any{
-
-    this.setLocalStorage(signupForm);
-    this.addProductData(signupForm);
-    this.resetFrom();
-
+  constructor(private formbilder: FormBuilder, private productservice: ProductService) {
   }
 
+  getData(): void {
+    this.signupForm = this.formbilder.group({
+      proId: ['', Validators.required],
+      proName: ['', Validators.required],
+      proPrice: ['', Validators.required],
+      proImage: ['', Validators.required]
+    });
+  }
 
+  ngOnInit() {
+    this.getData();
+  }
 
-        addProductData(signupForm:any):any{
-          let input=this.productservice.getLocalStorageProduct();
+  porductSubmit(signupForm: any): any {
+    this.addProductData(signupForm);
+    this.setLocalStorage();
+    this.resetFrom();
+  }
 
-          this.ProductId =signupForm.controls.proId.value;
-          this.ProductName =signupForm.controls.proName.value;
-          this.ProductPrice =signupForm.controls.proPrice.value;
-          this.ProductImage =signupForm.controls.proImage.value;
+  addProductData(signupForm: any): any {
+    this.input = this.productservice.getLocalStorageProduct();
+    let data = {
+      'proId': signupForm.controls.proId.value,
+      'proName': signupForm.controls.proName.value,
+      'proPrice': signupForm.controls.proPrice.value,
+      'proImage': signupForm.controls.proImage.value
+    }
+    this.input.push(data);
+  }
 
-          let data={'proId':this.ProductId,'proName':this.ProductName,'proPrice':this.ProductPrice,'proImage':this.ProductImage}
-          input.push(data);
-          return input;
-        }
+  resetFrom(): any {
+    this.signupForm.patchValue({
+      proId: '',
+      proName: '',
+      proPrice: '',
+      proImage: ''
+    });
+  }
 
-
-
-          resetFrom ():any {
-            this.signupForm.patchValue({
-                proId: '',
-                proName:'',
-                proPrice:'',
-                proImage:''
-      
-            });
-          }
-
-
-
-           setLocalStorage(signupForm:any):any{
-              let array_to_string = JSON.stringify( this.addProductData(signupForm));
-                localStorage.setItem('product', array_to_string);
-                       
-           }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  setLocalStorage(): void {
+    localStorage.setItem('product', JSON.stringify(this.input));
+  }
 }
 
 
