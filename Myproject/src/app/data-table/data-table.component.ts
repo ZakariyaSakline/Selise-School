@@ -6,6 +6,7 @@ import { MatPaginator} from '@angular/material';
 import { from } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {EditproductComponent} from '../editproduct/editproduct.component'
+import { CartService } from '../cart.service';
 
 
 
@@ -23,7 +24,7 @@ export interface PeriodicElement {
   selector: 'app-data-table',
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css'],
-  providers:[ProductService]
+  providers:[ProductService,CartService]
 
 })
 
@@ -32,22 +33,31 @@ export class DataTableComponent implements OnInit {
 
   constructor(private productservice:ProductService,
     public dialog: MatDialog,
+    private cartService: CartService
+
     ) { }
 
    
-  
-   jasonData:[]=this.productservice.getLocalStorageProduct();
-
-   
-   displayedColumns: string[] = ['proImage','proId', 'proName', 'proPrice', 'proEdit','proDelete'];
-   dataSource = new MatTableDataSource(this.jasonData);
- 
+    jasonData;
+    displayedColumns;
+    dataSource;
    @ViewChild(MatSort) sort: MatSort;
    @ViewChild(MatPaginator) paginator: MatPaginator;
 
    ngOnInit() {
+    this.jasonData= JSON.parse(localStorage.getItem('product'));
+    this.displayedColumns= ['proImage','proId', 'proName', 'proPrice', 'proEdit','proDelete'];
+    this.dataSource = new MatTableDataSource(this.jasonData);
+  
      this.dataSource.sort = this.sort;
-     this.dataSource.paginator = this.paginator;   
+     this.dataSource.paginator = this.paginator;
+
+     this.cartService.getUpdateProductEmitter().subscribe(response=>{
+      this.jasonData= JSON.parse(localStorage.getItem('product'));
+      this.displayedColumns= ['proImage','proId', 'proName', 'proPrice', 'proEdit','proDelete'];
+
+      this.dataSource = new MatTableDataSource(this.jasonData);
+      })
     }
 
    applyFilter(filterValue: string) {
@@ -78,7 +88,22 @@ export class DataTableComponent implements OnInit {
 
 
 
-  
+  deleteProduct(element):any{
+
+    let cartData=this.jasonData;
+      for(let i=0; i<cartData.length; i++){
+
+        if(cartData[i].proId == element.proId){
+            let indexValue=cartData.indexOf(cartData[i]);
+              cartData.splice(indexValue ,1);
+              this.dataSource = new MatTableDataSource(this.jasonData);
+              localStorage.setItem("product" , JSON.stringify(cartData));
+      }
+    }
+
+   return this.jasonData;
+
+  }
 
 
 

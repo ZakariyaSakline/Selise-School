@@ -15,7 +15,7 @@ export class CartDetailsComponent implements OnInit {
 
   constructor(
     private productservice:ProductService,
-    private _cartService: CartService
+    private cartService: CartService
     ) { }
 
   // jasonData:any=this.productservice.getLocalStorageAddCartProduct();
@@ -25,9 +25,7 @@ export class CartDetailsComponent implements OnInit {
 
 
   ngOnInit() {
-    this._cartService.getupdateProductEmitter().subscribe(id=>{
-      console.log(id);
-    })
+    
   }
   jasonData: any=this.productservice.getLocalStorageAddCartProduct();
 
@@ -63,12 +61,9 @@ export class CartDetailsComponent implements OnInit {
 
   removeCart(id:number):any{
 
-    this._cartService.emitUpdateProductEvent(id);
 
     let cartData=this.jasonData;
-
       for(let i=0; i<cartData.length; i++){
-
         if(cartData[i].proId == id){
             let indexValue=cartData.indexOf(cartData[i]);
               cartData.splice(indexValue ,1);
@@ -76,6 +71,8 @@ export class CartDetailsComponent implements OnInit {
               localStorage.setItem("cartPro" , JSON.stringify(cartData));
       }
     }
+    this.cartService.emitNavChangeEvent(10);
+
    return this.jasonData;
 
   }

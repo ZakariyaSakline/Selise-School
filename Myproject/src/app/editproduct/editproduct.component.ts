@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators,FormGroup,FormControl,NgForm } from '@angular/forms';
 import { ProductService } from '../product.service';
+import { CartService } from '../cart.service';
 
 
 
@@ -9,7 +10,8 @@ import { ProductService } from '../product.service';
   selector: 'app-editproduct',
   templateUrl: './editproduct.component.html',
   styleUrls: ['./editproduct.component.css'],
-  providers:[ProductService]
+  providers:[ProductService,CartService]
+
 
 })
 export class EditproductComponent implements OnInit {
@@ -24,7 +26,11 @@ export class EditproductComponent implements OnInit {
 
 
 
-  constructor(private formbilder:FormBuilder,private productservice:ProductService) {
+  constructor(private formbilder:FormBuilder,
+    private productservice:ProductService,
+    private cartService: CartService
+
+    ) {
 
 
     this.signupForm = formbilder.group({
@@ -81,13 +87,16 @@ export class EditproductComponent implements OnInit {
           for(let i=0; i<input.length; i++){
             if(input[i].proId ==  this.get_jeson_edit_form[0].proId ){
                 let indexValue=input.indexOf(input[i]);
-                let updateValue=input. splice(indexValue ,1, this.afterUpdateValue(signupForm));
+                input. splice(indexValue ,1, this.afterUpdateValue(signupForm));
                 localStorage.setItem('product', JSON.stringify(input));
 
               }
           }	
-          this.resetFrom();
 
+          this.resetFrom();
+          debugger;
+          this.cartService.emitUpdateProductEvent(10);
+return input;
       }
 
 

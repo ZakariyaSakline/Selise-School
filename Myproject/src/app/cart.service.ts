@@ -10,7 +10,7 @@ export class CartService {
 
   
   navchange: EventEmitter <number> = new EventEmitter();
-  updateProduct: EventEmitter<number> = new EventEmitter();
+  updateProduct: EventEmitter<any> = new EventEmitter();
 
   emitNavChangeEvent(x: number) {
     this.navchange.emit(x);
@@ -18,12 +18,12 @@ export class CartService {
   getNavChangeEmitter() {
     return this.navchange;
   }
-
-  emitUpdateProductEvent(x: number) {
-    this.navchange.emit(x);
+// for edit table
+emitUpdateProductEvent(x: number) {
+    this.updateProduct.emit(x);
   }
-  getupdateProductEmitter() {
-    return this.navchange;
+  getUpdateProductEmitter() {
+    return this.updateProduct;
   }
 // delete cart table row
 
