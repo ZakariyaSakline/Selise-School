@@ -3,14 +3,80 @@ import { CommonModule } from '@angular/common';
 
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesDataTableComponent } from './employees-data-table/employees-data-table.component';
+import {
+  MatToolbarModule,
+  MatSidenavModule,
+  MatCheckboxModule,
+  MatButtonModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatBadgeModule
+ 
+} from '@angular/material';
+import { AddEmployeesComponent } from './add-employees/add-employees.component';
 
 
 @NgModule({
-  declarations: [EmployeesDataTableComponent],
+  declarations: [EmployeesDataTableComponent, AddEmployeesComponent],
+  entryComponents: [AddEmployeesComponent],
   imports: [
     CommonModule,
-    EmployeesRoutingModule
-  ]
+    EmployeesRoutingModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatBadgeModule  ]
 })
 export class EmployeesModule { 
   constructor() {
