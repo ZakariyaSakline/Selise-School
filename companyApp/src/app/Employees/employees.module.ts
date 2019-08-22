@@ -35,9 +35,13 @@ import {
   MatSortModule,
   MatPaginatorModule,
   MatBadgeModule
- 
+
 } from '@angular/material';
 import { AddEmployeesComponent } from './add-employees/add-employees.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 
 
 @NgModule({
@@ -46,6 +50,9 @@ import { AddEmployeesComponent } from './add-employees/add-employees.component';
   imports: [
     CommonModule,
     EmployeesRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatCheckboxModule,
@@ -76,10 +83,10 @@ import { AddEmployeesComponent } from './add-employees/add-employees.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatBadgeModule  ]
+    MatBadgeModule]
 })
-export class EmployeesModule { 
+export class EmployeesModule {
   constructor() {
     console.log('Employees module working');
-   }
+  }
 }

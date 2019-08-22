@@ -12,8 +12,10 @@ export class AddproductComponent implements OnInit {
   signupForm: FormGroup;
   input;
 
-  constructor(private formbilder: FormBuilder, private productservice: ProductService) {
-  }
+  constructor(
+    private formbilder: FormBuilder, 
+    private productservice: ProductService
+    ) {}
 
   getData(): void {
     this.signupForm = this.formbilder.group({

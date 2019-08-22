@@ -10,8 +10,7 @@ import{AddEmployeesComponent} from '../add-employees/add-employees.component'
 export class EmployeesDataTableComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog,
-
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
