@@ -1,11 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { EmployeesModuleRoutingModule } from './employees-module-routing.module';
+import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { EmployeesDataTableComponent } from './employees-data-table/employees-data-table.component';
 import {
   MatToolbarModule,
   MatSidenavModule,
@@ -40,20 +38,24 @@ import {
   MatBadgeModule
  
 } from '@angular/material';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AddEmployeeComponent,
+    EmployeesDataTableComponent,
+    EditEmployeeComponent
   ],
+  entryComponents: [AddEmployeeComponent,EditEmployeeComponent],
 
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    CommonModule,
+    EmployeesModuleRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule,
+    FlexLayoutModule,
     MatToolbarModule,
     MatSidenavModule,
     MatCheckboxModule,
@@ -85,8 +87,10 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatBadgeModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  ]
 })
-export class AppModule { }
+export class EmployeesModuleModule { 
+  constructor() {
+    console.log('Employees module working');
+  }
+}
