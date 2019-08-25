@@ -26,6 +26,10 @@ export class EmployeesDataTableComponent implements OnInit {
   jasonData;
   displayedColumns;
   dataSource;
+  employeeInfo;
+
+ 
+
  @ViewChild(MatSort) sort: MatSort;
  @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -48,8 +52,9 @@ export class EmployeesDataTableComponent implements OnInit {
     });
   }
 // for editEmployee dialog
-  openEditEmployeeDialog(): void {
+  openEditEmployeeDialog(employeeInfo): void {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
+      data: employeeInfo,
       width: '800px',height:'700px'
     });
   
@@ -79,6 +84,12 @@ export class EmployeesDataTableComponent implements OnInit {
    return this.jasonData;
 
   }
+
+  // getEditEmployeeValue(employeeInfo){
+  //   let dialogRef = this.dialog.open(EditEmployeeComponent, {
+  //     data: employeeInfo,
+  //   });
+  // }
 
 
 
