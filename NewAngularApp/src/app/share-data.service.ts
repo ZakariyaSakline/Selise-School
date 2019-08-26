@@ -8,12 +8,14 @@ import { EventEmitter } from '@angular/core';
 export class ShareDataService {
 
   constructor() { }
-   changeEmployeeInfo: EventEmitter <number> = new EventEmitter();
+   changeEmployeeInfo: EventEmitter<number> = new EventEmitter();
 
   emitUpdateEmployeeInfo(x: number) {
+    debugger;
     this.changeEmployeeInfo.emit(x);
   }
   getUpdateEmployeeInfo() {
+    debugger;
     return this.changeEmployeeInfo;
   }
 

@@ -23,31 +23,32 @@ export class EmployeesDataTableComponent implements OnInit {
     private _shareDataService:ShareDataService
   ) { }
 
-  // jasonData;
+  jasonData;
   displayedColumns;
   dataSource;
   employeeInfo;
 
- 
+  zakariya;
 
  @ViewChild(MatSort) sort: MatSort;
  @ViewChild(MatPaginator) paginator: MatPaginator;
 
- jasonData= this._shareDataService.getLocalEmployee();
-
-
 
   ngOnInit() {
-    this._shareDataService.getUpdateEmployeeInfo().subscribe(response => {
-      this.jasonData = this._shareDataService.getLocalEmployee();
-      //eikhane backend call na diye jsonData k update korba
-
-    })
+    this.jasonData= this._shareDataService.getLocalEmployee();
     this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
     this.dataSource = new MatTableDataSource(this.jasonData);
 
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+
+    this._shareDataService.getUpdateEmployeeInfo().subscribe(x => {
+      debugger;
+      this.zakariya=x;
+      // this.jasonData = this._shareDataService.getLocalEmployee();
+      //eikhane backend call na diye jsonData k update korba
+console.log(this.zakariya);
+    })
   }
   openAddEmployeeDialog(): void {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {

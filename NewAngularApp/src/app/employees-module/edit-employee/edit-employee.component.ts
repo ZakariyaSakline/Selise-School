@@ -13,7 +13,7 @@ import{ShareDataService} from '../../share-data.service'
 })
 export class EditEmployeeComponent implements OnInit {
 
-
+  updateData;
   signupForm: FormGroup;
   employeeId:number;
   employeeName:string="";
@@ -60,14 +60,14 @@ export class EditEmployeeComponent implements OnInit {
       this.employeeAge =signupForm.controls.employeeAge.value;
       this.employeeAddress =signupForm.controls.employeeAddress.value;
       this.employeeImage =signupForm.controls.employeeImage.value;
-      let updateData={
+      this.updateData={
           'employeeId':this.employeeId,
           'employeeName':this.employeeName,
           'employeeAge':this.employeeAge,
           'employeeAddress':this.employeeAddress,
           'employeeImage':this.employeeImage
       }
-      return updateData;
+      return this.updateData;
   }
 
 
@@ -81,6 +81,7 @@ updateEmployeeInfo(signupForm:any):any{
             }
         }	
     // this.resetFrom();
+    debugger;
     this._shareDataService.emitUpdateEmployeeInfo(10);
     return localData;
   }
