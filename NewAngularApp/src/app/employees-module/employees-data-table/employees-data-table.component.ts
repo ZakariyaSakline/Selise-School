@@ -23,7 +23,7 @@ export class EmployeesDataTableComponent implements OnInit {
     private _shareDataService:ShareDataService
   ) { }
 
-  jasonData;
+  // jasonData;
   displayedColumns;
   dataSource;
   employeeInfo;
@@ -33,8 +33,16 @@ export class EmployeesDataTableComponent implements OnInit {
  @ViewChild(MatSort) sort: MatSort;
  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+ jasonData= this._shareDataService.getLocalEmployee();
+
+
+
   ngOnInit() {
-    this.jasonData= this._shareDataService.getLocalEmployee();
+    this._shareDataService.getUpdateEmployeeInfo().subscribe(response => {
+      this.jasonData = this._shareDataService.getLocalEmployee();
+      //eikhane backend call na diye jsonData k update korba
+
+    })
     this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
     this.dataSource = new MatTableDataSource(this.jasonData);
 
@@ -47,7 +55,7 @@ export class EmployeesDataTableComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The AddEmployee dialog was closed');
      
     });
   }
@@ -59,7 +67,7 @@ export class EmployeesDataTableComponent implements OnInit {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The EditEmployee dialog was closed');
      
     });
   }

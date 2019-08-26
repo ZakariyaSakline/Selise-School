@@ -43,16 +43,62 @@ export class EditEmployeeComponent implements OnInit {
   ngOnInit() {
     this.getEmployeeData();
     this.data;
-    console.log(this.data.employeeId)
     this.signupForm.setValue({
       "employeeId":this.data.employeeId,
       "employeeName":this.data.employeeName,
       "employeeAge":this.data.employeeAge,
       "employeeAddress":this.data.employeeAddress,
       "employeeImage":this.data.employeeImage
-
-
   });
   }
+
+
+    
+  afterUpdateValue(signupForm:any){
+      this.employeeId =signupForm.controls.employeeId.value;
+      this.employeeName =signupForm.controls.employeeName.value;
+      this.employeeAge =signupForm.controls.employeeAge.value;
+      this.employeeAddress =signupForm.controls.employeeAddress.value;
+      this.employeeImage =signupForm.controls.employeeImage.value;
+      let updateData={
+          'employeeId':this.employeeId,
+          'employeeName':this.employeeName,
+          'employeeAge':this.employeeAge,
+          'employeeAddress':this.employeeAddress,
+          'employeeImage':this.employeeImage
+      }
+      return updateData;
+  }
+
+
+updateEmployeeInfo(signupForm:any):any{
+    let localData=this._shareDataService.getLocalEmployee();
+        for(let i=0; i<localData.length; i++){
+          if(localData[i].employeeId ==  this.data.employeeId ){
+              let indexValue=localData.indexOf(localData[i]);
+              localData. splice(indexValue ,1, this.afterUpdateValue(signupForm));
+              localStorage.setItem('employees', JSON.stringify(localData));
+            }
+        }	
+    // this.resetFrom();
+    this._shareDataService.emitUpdateEmployeeInfo(10);
+    return localData;
+  }
+
+  // resetFrom ():any {
+  //   this.signupForm.patchValue({
+  //       employeeId: '',
+  //       employeeName:'',
+  //       employeeAge:'',
+  //       employeeAddress:'',
+  //       employeeImage:'',
+  //   });
+  // }
+
+  onNoClick(): void {
+     this.dialogRef.close();
+   }
+
+
 
 }
