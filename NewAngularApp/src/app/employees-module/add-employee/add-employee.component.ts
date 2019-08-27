@@ -2,6 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angular/forms';
 import{ShareDataService} from '../../share-data.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import{PassDAtaService} from '../../pass-data.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class AddEmployeeComponent implements OnInit {
   constructor(
     private formbilder: FormBuilder,
     private _shareDataService: ShareDataService,
+    private _passDAtaService:PassDAtaService,
     public dialogRef: MatDialogRef<AddEmployeeComponent>,
   ) { }
 
@@ -49,6 +51,7 @@ export class AddEmployeeComponent implements OnInit {
         'employeeImage': signupForm.controls.employeeImage.value
         }
       this.input.push(data);
+      this._passDAtaService.emitTableUpdateRowEvent(this.input);
       localStorage.setItem('employees', JSON.stringify(this.input));
   }
 

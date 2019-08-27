@@ -7,6 +7,7 @@ import { MatPaginator} from '@angular/material';
 import{ShareDataService} from '../../share-data.service';
 import { from } from 'rxjs';
 import{EditEmployeeComponent} from '../edit-employee/edit-employee.component'
+import{PassDAtaService} from '../../pass-data.service';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class EmployeesDataTableComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private _shareDataService:ShareDataService
+    private _shareDataService:ShareDataService,
+    private _passDAtaService:PassDAtaService
   ) { }
 
   jasonData;
@@ -35,6 +37,13 @@ export class EmployeesDataTableComponent implements OnInit {
 
 
   ngOnInit() {
+    this._passDAtaService.getTableUpdateEvent().subscribe(newData => {
+      this.reloadTableForEditEvent(newData);
+    });
+    this._passDAtaService.getTableUpdateRowEvent().subscribe(newEmployeeInfo => {
+      this.reloadTableForAddRowEvent(newEmployeeInfo);
+    });
+
     this.jasonData= this._shareDataService.getLocalEmployee();
     this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
     this.dataSource = new MatTableDataSource(this.jasonData);
@@ -42,13 +51,7 @@ export class EmployeesDataTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
 
-    this._shareDataService.getUpdateEmployeeInfo().subscribe(x => {
-      debugger;
-      this.zakariya=x;
-      // this.jasonData = this._shareDataService.getLocalEmployee();
-      //eikhane backend call na diye jsonData k update korba
-console.log(this.zakariya);
-    })
+
   }
   openAddEmployeeDialog(): void {
     const dialogRef = this.dialog.open(AddEmployeeComponent, {
@@ -100,7 +103,23 @@ console.log(this.zakariya);
   //   });
   // }
 
+  reloadTableForEditEvent(newData){
+        for(let i=0; i<this.jasonData.length; i++){
+          if(this.jasonData[i].employeeId ==  newData.employeeId ){
+            this.jasonData[i] =  newData;
+              // let indexValue=localData.indexOf(localData[i]);
+              // localData. splice(indexValue ,1, this.afterUpdateValue(signupForm));
+            }
+        }
+        this.jasonData= this._shareDataService.getLocalEmployee();
+        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+        this.dataSource = new MatTableDataSource(this.jasonData);
+      }
 
-
+      reloadTableForAddRowEvent(newEmployeeInfo){
+        this.jasonData=newEmployeeInfo;
+        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+        this.dataSource = new MatTableDataSource(this.jasonData);
+      }    
 
 }

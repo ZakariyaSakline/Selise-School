@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import{ShareDataService} from '../../share-data.service'
+import{ShareDataService} from '../../share-data.service';
+import{PassDAtaService} from '../../pass-data.service';
+
 
 
 
@@ -25,6 +27,7 @@ export class EditEmployeeComponent implements OnInit {
   constructor(
     private formbilder:FormBuilder,
     private _shareDataService: ShareDataService,
+    private _passDAtaService:PassDAtaService,
     public dialogRef: MatDialogRef<EditEmployeeComponent>,
     // for shareing Data
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -71,7 +74,7 @@ export class EditEmployeeComponent implements OnInit {
   }
 
 
-updateEmployeeInfo(signupForm:any):any{
+updateEmployeeInfo(signupForm:any):any{  
     let localData=this._shareDataService.getLocalEmployee();
         for(let i=0; i<localData.length; i++){
           if(localData[i].employeeId ==  this.data.employeeId ){
@@ -81,9 +84,7 @@ updateEmployeeInfo(signupForm:any):any{
             }
         }	
     // this.resetFrom();
-    debugger;
-    this._shareDataService.emitUpdateEmployeeInfo(10);
-    return localData;
+    this._passDAtaService.emitTableUpdateEvent(signupForm.value);
   }
 
   // resetFrom ():any {
