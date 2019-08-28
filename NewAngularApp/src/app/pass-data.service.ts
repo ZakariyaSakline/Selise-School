@@ -11,6 +11,8 @@ export class PassDAtaService {
 
   tableupdate: EventEmitter<any> = new EventEmitter();
   tableupdateRow: EventEmitter<any> = new EventEmitter();
+  companytableupdateRow: EventEmitter<any> = new EventEmitter();
+
 
   emitTableUpdateEvent(employeeInfo: any) {
     this.tableupdate.emit(employeeInfo);
@@ -20,12 +22,6 @@ export class PassDAtaService {
     return this.tableupdate;
   }
 
-  // emitUpdateEmployeeInfo(newData: any) {
-  //   this.changeEmployeeInfo.emit(newData);
-  // }
-  // getUpdateEmployeeInfo() {
-  //   return this.changeEmployeeInfo;
-  // }
 
   emitTableUpdateRowEvent(input:any){
     this.tableupdateRow.emit(input);
@@ -35,6 +31,12 @@ export class PassDAtaService {
   }
 
 
+  emitCompanyTableUpdateRowEvent(companyInfo:any){
+    this.companytableupdateRow.emit(companyInfo);
+  }
+  getCompanyTableUpdateRowEvent() {
+    return this.companytableupdateRow;
+  }
 
 
 }

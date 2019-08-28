@@ -8,14 +8,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class ShareDataService {
 
   constructor() { }
-  //  changeEmployeeInfo: EventEmitter<any> = new EventEmitter();
 
-  // emitUpdateEmployeeInfo(newData: any) {
-  //   this.changeEmployeeInfo.emit(newData);
-  // }
-  // getUpdateEmployeeInfo() {
-  //   return this.changeEmployeeInfo;
-  // }
 
   getLocalEmployee():any{
     let localParseArray = JSON.parse(localStorage.getItem('employees'));
@@ -26,6 +19,15 @@ export class ShareDataService {
         }
    }
 
+
+   getLocalcompany():any{
+    let localParseArray = JSON.parse(localStorage.getItem('company'));
+      if (localParseArray) {
+        return localParseArray;
+      } else {
+        return [];
+        }
+   }
 
 
 }

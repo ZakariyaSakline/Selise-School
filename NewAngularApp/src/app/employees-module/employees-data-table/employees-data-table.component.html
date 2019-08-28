@@ -18,13 +18,18 @@
   
         <ng-container matColumnDef="employeeImage">
           <th mat-header-cell *matHeaderCellDef><b> Employee Image </b></th>
-          <td mat-cell *matCellDef="let element"><img mat-card-image src="{{element.employeeImage}}" alt="Photo of product" style="height: 80px ;width: 120px;padding: 10px"> </td>
+          <td mat-cell *matCellDef="let element"><img mat-card-image src="{{element.employeeImage}}" alt="Photo of product" style="height: 80px ;width: 120px;padding: 5px"> </td>
         </ng-container>
   
         <!-- Name Column -->
         <ng-container matColumnDef="employeeName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Employee Name </b></th>
           <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="companyName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Company Name </b></th>
+          <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
         </ng-container>
   
         <!-- Weight Column -->

@@ -9,12 +9,12 @@ import{PassDAtaService} from '../../pass-data.service';
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css'],
-  providers:[ShareDataService]
-
 })
 export class AddEmployeeComponent implements OnInit {
   input;
   signupForm: FormGroup;
+
+  options: string[] = this._shareDataService.getLocalcompany();
 
   constructor(
     private formbilder: FormBuilder,
@@ -24,9 +24,11 @@ export class AddEmployeeComponent implements OnInit {
   ) { }
 
   getEmployeeData(): void {
+    debugger;
     this.signupForm = this.formbilder.group({
       employeeId: ['', Validators.required],
       employeeName: ['', Validators.required],
+      companyName: ['', Validators.required],
       employeeAge: ['', Validators.required],
       employeeAddress: ['', Validators.required],
       employeeImage: ['', Validators.required]
@@ -39,13 +41,14 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeSubmit(signupForm: any): any {
     this.addEmployeeData(signupForm);
-    this.resetFrom();
+    // this.resetFrom();
   }
   addEmployeeData(signupForm: any): any {
       this.input= this._shareDataService.getLocalEmployee();
       let data = {
         'employeeId': signupForm.controls.employeeId.value,
         'employeeName': signupForm.controls.employeeName.value,
+        'companyName': signupForm.controls.companyName.value,
         'employeeAge': signupForm.controls.employeeAge.value,
         'employeeAddress': signupForm.controls.employeeAddress.value,
         'employeeImage': signupForm.controls.employeeImage.value
@@ -55,15 +58,15 @@ export class AddEmployeeComponent implements OnInit {
       localStorage.setItem('employees', JSON.stringify(this.input));
   }
 
-  resetFrom(): any {
-    this.signupForm.patchValue({
-      employeeId: '',
-      employeeName: '',
-      employeeAge: '',
-      employeeAddress: '',
-      employeeImage: ''
-    });
-  }
+  // resetFrom(): any {
+  //   this.signupForm.patchValue({
+  //     employeeId: '',
+  //     employeeName: '',
+  //     employeeAge: '',
+  //     employeeAddress: '',
+  //     employeeImage: ''
+  //   });
+  // }
   onNoClick(): void {
     this.dialogRef.close();
   }

@@ -1,4 +1,6 @@
 
+<h1 style="text-align: center">Add another employee here :</h1>
+
 <form [formGroup]="signupForm" (ngSubmit)="employeeSubmit(signupForm)" (ngSubmit)="onNoClick()">
   <div class="example-container">
 
@@ -12,6 +14,15 @@
       <mat-form-field hintLabel="Max 20 characters">
           <input matInput #input type="text" formControlName="employeeName"  placeholder="Employee Name" maxlength="20">
           <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field >
+          <input matInput type="text" placeholder="Pick Company name" aria-label="Number" formControlName="companyName" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option.companyName">
+              {{option.companyName}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
       <mat-form-field hintLabel="Max 3 characters">

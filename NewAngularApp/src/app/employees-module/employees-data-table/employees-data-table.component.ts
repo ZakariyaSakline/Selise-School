@@ -13,8 +13,7 @@ import{PassDAtaService} from '../../pass-data.service';
 @Component({
   selector: 'app-employees-data-table',
   templateUrl: './employees-data-table.component.html',
-  styleUrls: ['./employees-data-table.component.css'],
-  providers:[ShareDataService]
+  styleUrls: ['./employees-data-table.component.css']
 
 })
 export class EmployeesDataTableComponent implements OnInit {
@@ -30,7 +29,6 @@ export class EmployeesDataTableComponent implements OnInit {
   dataSource;
   employeeInfo;
 
-  zakariya;
 
  @ViewChild(MatSort) sort: MatSort;
  @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,7 +43,7 @@ export class EmployeesDataTableComponent implements OnInit {
     });
 
     this.jasonData= this._shareDataService.getLocalEmployee();
-    this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+    this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'companyName','employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
     this.dataSource = new MatTableDataSource(this.jasonData);
 
     this.dataSource.sort = this.sort;
@@ -112,13 +110,13 @@ export class EmployeesDataTableComponent implements OnInit {
             }
         }
         this.jasonData= this._shareDataService.getLocalEmployee();
-        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'companyName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
         this.dataSource = new MatTableDataSource(this.jasonData);
       }
 
       reloadTableForAddRowEvent(newEmployeeInfo){
         this.jasonData=newEmployeeInfo;
-        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+        this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'companyName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
         this.dataSource = new MatTableDataSource(this.jasonData);
       }    
 
