@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angula
 import{ShareDataService} from '../../share-data.service'
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import{PassDAtaService} from '../../pass-data.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +14,7 @@ import{PassDAtaService} from '../../pass-data.service';
 export class AddEmployeeComponent implements OnInit {
   input;
   signupForm: FormGroup;
-
+// for input company name option
   options: string[] = this._shareDataService.getLocalcompany();
 
   constructor(
@@ -21,6 +22,7 @@ export class AddEmployeeComponent implements OnInit {
     private _shareDataService: ShareDataService,
     private _passDAtaService:PassDAtaService,
     public dialogRef: MatDialogRef<AddEmployeeComponent>,
+    private _snackBar: MatSnackBar
   ) { }
 
   getEmployeeData(): void {
@@ -67,8 +69,15 @@ export class AddEmployeeComponent implements OnInit {
   //     employeeImage: ''
   //   });
   // }
+  // for snackbar
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }
+
 
 }

@@ -7,13 +7,22 @@
 
    
       <mat-form-field hintLabel="Max 5 characters">
-        <input matInput #id   formControlName="employeeId"  placeholder="Employee Id"  maxlength="5" pattern="[0-9]{0,5}" >
+        <input matInput #id   formControlName="employeeId"  placeholder="Employee Id"  maxlength="5" pattern="[0-9]{0,5}" readonly>
         <mat-hint align="end">{{id.value?.length || 0}}/5</mat-hint>
       </mat-form-field>
 
       <mat-form-field hintLabel="Max 20 characters">
           <input matInput #input type="text" formControlName="employeeName"  placeholder="Employee Name" maxlength="20">
           <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field >
+          <input matInput type="text" placeholder="Pick Company name" aria-label="Number" formControlName="companyName" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option.companyName">
+              {{option.companyName}}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
       <mat-form-field hintLabel="Max 3 characters">

@@ -77,8 +77,16 @@ export class EmployeesDataTableComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
+    confirmDeleteEmployee(element) {
+        if (confirm("Are you sure?")) {
+           this.deleteEmployee(element);
+        } else {
+         
+        }
+      }
     
-  deleteProduct(element):any{
+  deleteEmployee(element):any{
 
     let dataTable=this.jasonData;
       for(let i=0; i<dataTable.length; i++){
@@ -100,6 +108,7 @@ export class EmployeesDataTableComponent implements OnInit {
   //     data: employeeInfo,
   //   });
   // }
+  
 
   reloadTableForEditEvent(newData){
         for(let i=0; i<this.jasonData.length; i++){
@@ -114,7 +123,7 @@ export class EmployeesDataTableComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.jasonData);
       }
 
-      reloadTableForAddRowEvent(newEmployeeInfo){
+  reloadTableForAddRowEvent(newEmployeeInfo){
         this.jasonData=newEmployeeInfo;
         this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'companyName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
         this.dataSource = new MatTableDataSource(this.jasonData);

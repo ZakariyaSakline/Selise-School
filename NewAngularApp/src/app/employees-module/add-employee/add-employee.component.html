@@ -1,7 +1,7 @@
 
 <h1 style="text-align: center">Add another employee here :</h1>
 
-<form [formGroup]="signupForm" (ngSubmit)="employeeSubmit(signupForm)" (ngSubmit)="onNoClick()">
+<form [formGroup]="signupForm" (ngSubmit)="employeeSubmit(signupForm)" (ngSubmit)="onNoClick()" (ngSubmit)="openSnackBar(message='Add table row successfully', action='Done')">
   <div class="example-container">
 
 
