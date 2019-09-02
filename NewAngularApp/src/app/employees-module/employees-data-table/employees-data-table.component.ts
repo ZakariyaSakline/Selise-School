@@ -127,6 +127,8 @@ export class EmployeesDataTableComponent implements OnInit {
         this.jasonData=newEmployeeInfo;
         this.displayedColumns= ['employeeId','employeeImage', 'employeeName', 'companyName', 'employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
         this.dataSource = new MatTableDataSource(this.jasonData);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
       }    
 
 }

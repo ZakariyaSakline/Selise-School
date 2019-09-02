@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User, Weather } from 'src/assets/userModel';
 
 
 
@@ -9,13 +10,20 @@ import { HttpClient } from '@angular/common/http';
 export class ShareDataService {
 
   constructor(
-    // private http: HttpClient
+    private http: HttpClient
     ) { }
+// api http get call
+    apiUrl='https://jsonplaceholder.typicode.com/users';
+    getConfig(){
+      return this.http.get<User[]>(this.apiUrl);
+    }
 
-    // configUrl='assets/config.json';
-    // getConfig(){
-    //   return this.http.get(this.configUrl);
-    // }
+    // api http weather get call
+  
+weatherApi='https://jsonplaceholder.typicode.com/users';
+getWeatherApi(){
+  return this.http.get<Weather[]>(this.weatherApi);
+}
 
 
   getLocalEmployee():any{
