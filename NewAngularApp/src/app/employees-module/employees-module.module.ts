@@ -41,12 +41,16 @@ import {
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { HttpClientModule } from '@angular/common/http';
+import {HttpCallComponent} from './http-call/http-call.component';
+
 
 @NgModule({
   declarations: [
     AddEmployeeComponent,
     EmployeesDataTableComponent,
-    EditEmployeeComponent
+    EditEmployeeComponent,
+    HttpCallComponent
   ],
   entryComponents: [AddEmployeeComponent,EditEmployeeComponent],
 
@@ -56,6 +60,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
+    HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
     MatCheckboxModule,

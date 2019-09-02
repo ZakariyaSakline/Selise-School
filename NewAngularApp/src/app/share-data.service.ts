@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-// import { EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 
 
 @Injectable({
@@ -7,7 +8,14 @@ import { Injectable, EventEmitter } from '@angular/core';
 })
 export class ShareDataService {
 
-  constructor() { }
+  constructor(
+    // private http: HttpClient
+    ) { }
+
+    // configUrl='assets/config.json';
+    // getConfig(){
+    //   return this.http.get(this.configUrl);
+    // }
 
 
   getLocalEmployee():any{
@@ -28,6 +36,10 @@ export class ShareDataService {
         return [];
         }
    }
+
+
+
+
 
 
 }
