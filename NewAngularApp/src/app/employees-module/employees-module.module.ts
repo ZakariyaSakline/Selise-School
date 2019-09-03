@@ -43,7 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { HttpClientModule } from '@angular/common/http';
 import {HttpCallComponent} from './http-call/http-call.component';
-
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -61,6 +61,9 @@ import {HttpCallComponent} from './http-call/http-call.component';
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
+    AgmCoreModule.forRoot({
+        apiKey:'AIzaSyCfZEAEZvjDqr76f_hcDvzaRvOyskvGVX4'
+    }),
     MatToolbarModule,
     MatSidenavModule,
     MatCheckboxModule,

@@ -2,6 +2,10 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, Weather } from 'src/assets/userModel';
 
+interface Location{
+  latitude:string;
+  longitude:string;
+}
 
 
 @Injectable({
@@ -20,9 +24,13 @@ export class ShareDataService {
 
     // api http weather get call
   
-weatherApi='https://jsonplaceholder.typicode.com/users';
+weatherApi='../../assets/data.json';
 getWeatherApi(){
-  return this.http.get<Weather[]>(this.weatherApi);
+  return this.http.get(this.weatherApi);
+}
+
+getGoogleMapApi(){
+  return this.http.get('https://ipapi.co/json/');
 }
 
 

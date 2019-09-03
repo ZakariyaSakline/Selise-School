@@ -11,7 +11,12 @@ import { User, Weather } from 'src/assets/userModel';
 export class HttpCallComponent implements OnInit {
 
   users:User[];
-  mydata:Weather[];
+  mydata:any;
+  showApiData:any;
+
+  lat:string;
+  lng:string;
+  Location:object;
   constructor(
     private _shareDataService:ShareDataService
     ) { }
@@ -24,7 +29,16 @@ export class HttpCallComponent implements OnInit {
     .subscribe(data =>this.users=data);
 
     this._shareDataService.getWeatherApi()
-    .subscribe(weatherData=>this.mydata= weatherData);
+    .subscribe(weatherData=>{this.mydata= weatherData,
+      console.log(this.mydata);
+    });
+
+    this._shareDataService.getGoogleMapApi()
+    .subscribe(apiData=>{this.showApiData=apiData,
+    console.log(this.showApiData);
+        this.lat=apiData.latitude;
+        this.lng=apiData.longtude;
+    })
   }
 
 }
