@@ -36,8 +36,8 @@ export class HttpCallComponent implements OnInit {
     this._shareDataService.getGoogleMapApi()
     .subscribe(apiData=>{this.showApiData=apiData,
     console.log(this.showApiData);
-        this.lat=apiData.latitude;
-        this.lng=apiData.longtude;
+        // this.lat=apiData.latitude;
+        // this.lng=apiData.longtude;
     })
   }
 
