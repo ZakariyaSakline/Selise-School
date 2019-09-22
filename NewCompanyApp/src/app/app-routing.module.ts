@@ -5,16 +5,20 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/Dashboard',
     pathMatch: 'full'
   },
   {
-    path:'dashboard',
+    path:'Dashboard',
     loadChildren:'./company/company.module#CompanyModule'
   },
   {
-    path:'employees',
+    path:'Employees',
     loadChildren:'./employees/employees.module#EmployeesModule'
+  },
+  {
+    path:'EmployeesDataTable',
+    loadChildren:'./data-table/data-table.module#DataTableModule'
   },
 ];
 
