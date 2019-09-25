@@ -16,5 +16,13 @@ getEmployeeInfoApi(){
     return this._http.get(this.employeeInfoApiUrl);
 }
 
+getLocalEmployee():any{
+  let localParseArray = JSON.parse(localStorage.getItem('emplnewEmployeesInfooyees'));
+    if (localParseArray) {
+      return localParseArray;
+    } else {
+      return [];
+      }
+ }
 
 }
