@@ -25,8 +25,12 @@
     </mat-drawer> -->
 
   <mat-drawer-content>
-    <div style=" margin:auto; width:100%;">
-      <router-outlet></router-outlet>
-    </div>
+      <div class="container"fxLayout >
+          <div class="item-1" fxFlex="10%" ></div>
+          <div class="item-2" fxFlex="80%"class="bothSide">
+              <router-outlet></router-outlet>
+          </div>
+          <div class="item-3" fxFlex="10%" ></div>
+        </div>
   </mat-drawer-content>
 </mat-drawer-container>

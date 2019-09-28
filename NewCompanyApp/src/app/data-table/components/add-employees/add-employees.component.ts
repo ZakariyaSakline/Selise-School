@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angular/forms';
 import { ShareDataService } from '../../../services/share-data.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { EventEmitterService } from '../../../services/event-emitter.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class AddEmployeesComponent implements OnInit {
     public _dialogRef: MatDialogRef<AddEmployeesComponent>,
     private _formbilder: FormBuilder,
     private _shareDataService: ShareDataService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _eventEmitterService:EventEmitterService
 
   ) { }
 
@@ -53,7 +55,7 @@ export class AddEmployeesComponent implements OnInit {
       'employeeImage': signupForm.controls.employeeImage.value
       }
     this.localJsonData.push(data);
-    // this._passDAtaService.emitTableUpdateRowEvent(this.input);
+    this._eventEmitterService.emitTableSubmitEvent(this.localJsonData);
     localStorage.setItem('newEmployeesInfo', JSON.stringify(this.localJsonData));
 }
 

@@ -3,7 +3,9 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { MatPaginator} from '@angular/material';
-import { AddEmployeesComponent } from '../add-employees/add-employees.component'
+import { AddEmployeesComponent } from '../add-employees/add-employees.component';
+import { ShareDataService} from '../../../services/share-data.service';
+import { EventEmitterService } from '../../../services/event-emitter.service';
 
 @Component({
   selector: 'app-employee-table',
@@ -12,8 +14,15 @@ import { AddEmployeesComponent } from '../add-employees/add-employees.component'
 })
 export class EmployeeTableComponent implements OnInit {
 
+  jasonData;
+  displayedColumns;
+  dataSource;
+
+
   constructor(
     public _dialog: MatDialog,
+    private _shareDataService:ShareDataService,
+    private _eventEmitterService:EventEmitterService
 
   ) { }
 
@@ -23,6 +32,16 @@ export class EmployeeTableComponent implements OnInit {
 
 
   ngOnInit() {
+    this.jasonData= this._shareDataService.getLocalEmployee();
+    this.displayedColumns= ['employeeId','employeeImage', 'employeeName','employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+    this.dataSource = new MatTableDataSource(this.jasonData);
+
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
+    this._eventEmitterService.getTableUpdateRowEvent().subscribe(newEmployeeInfo=>{
+      this.reloadTableForAddRowEvent(newEmployeeInfo);
+    });
   }
 
 
@@ -37,9 +56,18 @@ export class EmployeeTableComponent implements OnInit {
     });
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
+  reloadTableForAddRowEvent(newEmployeeInfo){
+    this.jasonData= newEmployeeInfo;
+    this.displayedColumns= ['employeeId','employeeImage', 'employeeName','employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+    this.dataSource = new MatTableDataSource(this.jasonData);
 
-
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
 
 }

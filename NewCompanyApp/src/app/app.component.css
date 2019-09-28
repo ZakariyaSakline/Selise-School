@@ -25,8 +25,14 @@
     width:200px;
   } */
   .btn{
-    transition: 0.3s;
+    padding: 13px;
+    transition: 0.5s;
   }
 .btn:hover{
   background-color: yellow;
+}
+.bothSide{
+  background-color: rgb(233, 230, 230);
+  min-height: 800px;
+  padding: 0;
 }

@@ -17,7 +17,7 @@ getEmployeeInfoApi(){
 }
 
 getLocalEmployee():any{
-  let localParseArray = JSON.parse(localStorage.getItem('emplnewEmployeesInfooyees'));
+  let localParseArray = JSON.parse(localStorage.getItem('newEmployeesInfo'));
     if (localParseArray) {
       return localParseArray;
     } else {
