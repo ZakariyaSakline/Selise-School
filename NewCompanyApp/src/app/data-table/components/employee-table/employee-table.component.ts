@@ -6,6 +6,7 @@ import { MatPaginator} from '@angular/material';
 import { AddEmployeesComponent } from '../add-employees/add-employees.component';
 import { ShareDataService} from '../../../services/share-data.service';
 import { EventEmitterService } from '../../../services/event-emitter.service';
+import{ EditTableInfoComponent } from '../../components/edit-table-info/edit-table-info.component';
 
 @Component({
   selector: 'app-employee-table',
@@ -49,13 +50,22 @@ export class EmployeeTableComponent implements OnInit {
     const dialogRef = this._dialog.open(AddEmployeesComponent, {
       width: '650px',height:'700px'
     });
-  
     dialogRef.afterClosed().subscribe(result => {
       console.log('The AddEmployee dialog was closed');
-     
     });
   }
 
+  openEditEmployeeDialog(employeeInf): void {
+    const dialogRef = this._dialog.open(EditTableInfoComponent, {
+      data :employeeInf,
+      width: '650px',height:'700px'
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The EditEmployee dialog was closed');
+     
+    });
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

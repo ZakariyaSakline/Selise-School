@@ -40,14 +40,16 @@ import {
 } from '@angular/material';
 import { AddEmployeesComponent } from './components/add-employees/add-employees.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EditTableInfoComponent } from './components/edit-table-info/edit-table-info.component';
 
 
 @NgModule({
   declarations: [
     EmployeeTableComponent,
     AddEmployeesComponent,
+    EditTableInfoComponent,
     ],
-    entryComponents: [AddEmployeesComponent,],
+    entryComponents: [AddEmployeesComponent,EditTableInfoComponent],
 
   imports: [
     CommonModule,

@@ -1,12 +1,12 @@
 
-  <h1 style="text-align: center; color: brown ">Add another employee here :</h1>
+  <h1 style="text-align: center; color: brown ">Edit employee info :</h1>
 
-  <form [formGroup]="signupForm" (ngSubmit)="employeeSubmit(signupForm)" (ngSubmit)="onNoClick()" (ngSubmit)="openSnackBar(message='Add table row successfully', action='Done')">
+  <form [formGroup]="signupForm" (ngSubmit)="updateEmployeeInfo(signupForm)" (ngSubmit)="onNoClick()" (ngSubmit)="openSnackBar(message='Edit table row successfully', action='Done')">
       <div class="example-container">
 
         <mat-form-field appearance="outline" style="width: 80% ;" hintLabel="Max 5 numbers">
           <mat-label>Employee Id</mat-label>
-          <input matInput #id  formControlName="employeeId" ngModel placeholder="Enter employee id" maxlength="5" pattern="[0-9]{0,5}">
+          <input matInput #id  formControlName="employeeId"  placeholder="Enter employee id" maxlength="5" pattern="[0-9]{0,5}" readonly>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
           <mat-hint align="end">{{id.value?.length || 0}}/5</mat-hint>
         </mat-form-field>

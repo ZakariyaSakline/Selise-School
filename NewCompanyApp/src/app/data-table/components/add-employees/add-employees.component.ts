@@ -45,7 +45,6 @@ export class AddEmployeesComponent implements OnInit {
   }
 
   getEmployeeInputData(signupForm: any): any {
-    debugger;
     this.localJsonData=this._shareDataService.getLocalEmployee();
     let data = {
       'employeeId': signupForm.controls.employeeId.value,
