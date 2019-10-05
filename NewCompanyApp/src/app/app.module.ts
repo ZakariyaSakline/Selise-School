@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { ShareDataService } from './services/share-data.service';
+import { SliderModule } from 'ngx-slider';
 import {
   MatToolbarModule,
   MatSidenavModule,
@@ -51,6 +52,7 @@ import {
     BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
+    SliderModule,
 
   MatToolbarModule,
   MatSidenavModule,

@@ -1,7 +1,7 @@
 <div class="container"fxLayout  fxLayoutAlign="center" >
   <div class="item-1" fxFlex="0%"></div>
   <div class="item-2" fxFlex="100%">
-    <a mat-button [routerLink]="'/dashboard'" class="btn"><i class="material-icons">dashboard</i> Dashboard</a>
+    <!-- <a mat-button [routerLink]="'/dashboard'" class="btn"><i class="material-icons">dashboard</i> Dashboard</a> -->
     <a mat-button  (click)="openAddEmployeeDialog()" class="btn"><i class="material-icons">person_add</i>Add Employees</a>
   </div>
   <div class="item-3" fxFlex="0%"></div>
@@ -12,7 +12,7 @@
   <mat-form-field appearance="outline" style="width: 80%; padding: 2% ;">
     <mat-label style="color:rgb(28, 139, 130)">Search for Employee info</mat-label>
     <input matInput  (keyup)="applyFilter($event.target.value)" placeholder="Filter here" >
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-icon matSuffix><i class="material-icons">search</i></mat-icon>
   </mat-form-field>
 </div>
     

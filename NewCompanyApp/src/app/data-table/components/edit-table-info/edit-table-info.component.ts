@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl, NgForm } from '@angula
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import{ShareDataService} from '../../../services/share-data.service';
+import { EventEmitterService } from '../../../services/event-emitter.service';
 
 @Component({
   selector: 'app-edit-table-info',
@@ -15,10 +16,11 @@ export class EditTableInfoComponent implements OnInit {
   updateData;
 
   constructor(
-    private _formbilder: FormBuilder,
-    private _shareDataService: ShareDataService,
-    public _dialogRef: MatDialogRef<EditTableInfoComponent>,
-    private _snackBar: MatSnackBar,
+    private _formbilder : FormBuilder,
+    private _shareDataService : ShareDataService,
+    private _eventEmitterService : EventEmitterService,
+    public _dialogRef : MatDialogRef<EditTableInfoComponent>,
+    private _snackBar : MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any
 
   ) { }
@@ -65,7 +67,7 @@ updateEmployeeInfo(signupForm:any):any{
           }
       }	
   // this.resetFrom();
-  // this._passDAtaService.emitTableUpdateEvent(signupForm.value);
+  this._eventEmitterService.emitEditEvent(signupForm.value);
 }
 
 openSnackBar(message: string, action: string) {

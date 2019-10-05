@@ -41,7 +41,12 @@ export class EmployeeTableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
 
     this._eventEmitterService.getTableUpdateRowEvent().subscribe(newEmployeeInfo=>{
-      this.reloadTableForAddRowEvent(newEmployeeInfo);
+      this.reloadTableForAddRow(newEmployeeInfo);
+    });
+
+    this._eventEmitterService.getEditEvent().subscribe(afterEditData =>{
+      debugger;
+      this.reloadTableRowForEditData(afterEditData);
     });
   }
 
@@ -55,22 +60,21 @@ export class EmployeeTableComponent implements OnInit {
     });
   }
 
-  openEditEmployeeDialog(employeeInf): void {
+  openEditEmployeeDialog(employeeInfo): void {
     const dialogRef = this._dialog.open(EditTableInfoComponent, {
-      data :employeeInf,
+      data :employeeInfo,
       width: '650px',height:'700px'
     });
-  
     dialogRef.afterClosed().subscribe(result => {
       console.log('The EditEmployee dialog was closed');
-     
     });
   }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  reloadTableForAddRowEvent(newEmployeeInfo){
+  reloadTableForAddRow(newEmployeeInfo){
     this.jasonData= newEmployeeInfo;
     this.displayedColumns= ['employeeId','employeeImage', 'employeeName','employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
     this.dataSource = new MatTableDataSource(this.jasonData);
@@ -78,6 +82,37 @@ export class EmployeeTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
+
+  reloadTableRowForEditData(afterEditData){
+    this.jasonData= this._shareDataService.getLocalEmployee();
+    this.displayedColumns= ['employeeId','employeeImage', 'employeeName','employeeAge','employeeAddress', 'employeeEdit','employeeDelete'];
+    this.dataSource = new MatTableDataSource(this.jasonData);
+
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  confirmDeleteEmployee(element) {
+    if (confirm("Are you sure?")) {
+       this.deleteEmployeeTableRow(element);
+    } else {
+    }
+  }
+
+  deleteEmployeeTableRow(element):any{
+    let dataTable=this.jasonData;
+      for(let i=0; i<dataTable.length; i++){
+        if(dataTable[i].employeeId == element.employeeId){
+            let indexValue=dataTable.indexOf(dataTable[i]);
+              dataTable.splice(indexValue ,1);
+              this.dataSource = new MatTableDataSource(this.jasonData);
+              localStorage.setItem("newEmployeesInfo" , JSON.stringify(dataTable));
+      }
+    }
+   return this.jasonData;
+  }
+
+
 
 
 }

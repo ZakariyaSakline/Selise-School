@@ -39,8 +39,14 @@ import {
   MatBadgeModule
  
 } from '@angular/material';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 @NgModule({
-  declarations: [EmployeesInfoComponent],
+  declarations: [
+     EmployeesInfoComponent,
+     EmployeeDetailsComponent
+    ],
+    entryComponents: [EmployeeDetailsComponent],
+
   imports: [
     CommonModule,
     EmployeesRoutingModule,
